@@ -1,0 +1,18 @@
+public class Main {
+
+    public static void main(String[] args) {
+    // write your code here
+        int n = 23456;
+
+        int ones = (n/1)%10,tens = (n/10)%10,hundreds = (n/100)%10,thousands = (n/1000)%10,ten_thousands = (n/10000)%10;
+        
+        System.out.println(ones);
+        System.out.println(tens);
+        System.out.println(hundreds);
+        System.out.println(thousands);
+        System.out.println(ten_thousands);
+
+     
+    }
+}
+ 
