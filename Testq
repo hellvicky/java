@@ -1,0 +1,135 @@
+[26/01, 22:56] +919160484986: import java.util.Scanner;
+
+import java.util.ArrayList;
+
+import java.util.Arrays;
+
+import java.util.List;
+
+class Source {
+
+  
+
+    public static void main(String[] args) {
+
+        Scanner s = new Scanner(System.in);
+
+        int n1 = s.nextInt();
+
+        int[] array1 = new int[n1];
+
+        for (int i = 0; i < n1; i++) {
+
+            array1[i] = s.nextInt();
+
+        }
+
+        int n2 = s.nextInt();
+
+        int[] array2 = new int[n2];
+
+        for (int i = 0; i < n2; i++) {
+
+            array2[i] = s.nextInt();
+
+        }
+
+        Arrays.sort(array1);
+
+        Arrays.sort(array2);
+
+        List<Integer> integerList = new ArrayList<>();
+
+        for(int i= 0 ; i < n2; i++){
+
+            if(array1[array1.length -1 ] > array2[i]){
+
+                integerList.add(array2[i]);
+
+            }
+
+        }
+
+        if(integerList.isEmpty()){
+
+            System.out.println("Not Possible");
+
+        }else {
+
+            System.out.println(integerList.get(integerList.size()-1));
+
+        }
+
+        // Write your code here
+
+    }
+
+}
+
+[26/01, 22:58] +919160484986: import java.util.*;
+
+class Source {
+
+   
+
+        public static void main(String ss[]) {
+
+            Scanner scanner = new Scanner(System.in);
+
+            int sizeArray1 = scanner.nextInt();
+
+            int sortedArray1[] = getArrayInput(sizeArray1, scanner);
+
+            int sizeArray2 = scanner.nextInt();
+
+            int sortedArray2[] = getArrayInput(sizeArray2, scanner);
+
+            int descendingMerge[]=mergeBothInDescendingOrder(sortedArray1, sortedArray2);
+
+            // write your code here
+
+            for (int descendingMergeResponse:
+
+                 descendingMerge) {
+
+                System.out.println(descendingMergeResponse);
+
+            }
+
+        }
+
+        public static int[] getArrayInput(int sizeArray, Scanner scanner){
+
+            int[] array = new int[sizeArray];
+
+            for(int i = 0; i < sizeArray; i++)
+
+            {
+
+                array[i]=scanner.nextInt();
+
+            }
+
+            return array;
+
+        }
+
+    public static int[] mergeBothInDescendingOrder(int[] arr1, int[] arr2){
+
+        int[] result = new int[arr1.length + arr2.length];
+
+        System.arraycopy(arr1, 0, result, 0, arr1.length);
+
+        System.arraycopy(arr2, 0, result, arr1.length, arr2.length);
+
+        return Arrays.stream(result).boxed()
+
+                     .sorted(Collections.reverseOrder())
+
+                     .mapToInt(Integer::intValue)
+
+                     .toArray();
+
+    }
+
+}
