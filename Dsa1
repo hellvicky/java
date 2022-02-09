@@ -1,0 +1,185 @@
+[08/02, 6:45 pm] +91 79052 88079: import java.util.*;
+
+public class Source {
+
+    public static void main(String args[]) {
+
+        Stack<Integer> stack = new Stack<>();
+
+        Scanner s = new Scanner(System.in);
+
+        int n = s.nextInt();
+
+        while (n-- > 0)
+
+            stack.push(s.nextInt());
+
+        deleteFirstHalf(stack);
+
+    }
+
+    // Method to delete the first half of the elements from the bottom of the stackand print the remaining elements
+
+    static void deleteFirstHalf(Stack<Integer> stack) {
+
+        // Write your code here
+
+        Stack<Integer> reverseStack = new Stack<>();
+
+        int n = stack.size();
+
+        //System.out.println(stack);
+
+        for(int i = 1; i<=(n-n/2); i++){
+
+            reverseStack.push(stack.pop());
+
+        }
+
+        for(int j = 1; j<=n/2; j++){
+
+            stack.pop();
+
+        }
+
+        for(int k = 1; k<=(n-n/2); k++){
+
+            stack.push(reverseStack.pop());
+
+        }
+
+        System.out.println(stack);
+
+    }
+
+}
+
+[08/02, 6:47 pm] +91 79052 88079: import java.util.*;
+
+public class Source {
+
+    public static void main(String args[]) {
+
+        Queue<Integer> queue = new LinkedList<Integer>();
+
+        Scanner s = new Scanner(System.in);
+
+        int n = s.nextInt();
+
+        while (n-- > 0)
+
+            queue.add(s.nextInt());
+
+        sort(queue);
+
+    }
+
+    // Method to sort the queue
+
+    static void sort(Queue<Integer> queue) {
+
+        // Write your code here
+
+        int n = queue.size();
+
+       Queue<Integer> queueB = new LinkedList<Integer>();
+
+       for (int p = 0; p<(n-n/2); p++){
+
+           while(!queue.isEmpty()){
+
+               int x = queue.poll();
+
+               int size = queue.size();
+
+               int swap = 0;
+
+               for(int i = 0; i<size; i++){
+
+                   int y = queue.poll();
+
+                   if(x<=y){
+
+                       int temp = x;
+
+                       x = y;
+
+                       y = temp;
+
+                       swap++;
+
+                   }
+
+                   queueB.add(y);
+
+               }
+
+               queueB.add(x);
+
+               int count = queueB.size()-1;
+
+               if(swap==count){
+
+               //System.out.println(queue);   
+
+               System.out.println(queueB);
+
+               return;
+
+           }
+
+          
+
+           }
+
+            while(!queueB.isEmpty()){
+
+               int x1 = queueB.poll();
+
+               int size1 = queueB.size();
+
+               int swap1 = 0;
+
+               for(int j = 0; j<size1; j++){
+
+                   int y1 = queueB.poll();
+
+                   if(x1<=y1){
+
+                       int temp1 = x1;
+
+                       x1 = y1;
+
+                       y1 = temp1;
+
+                       swap1++;
+
+                   }
+
+                   queue.add(y1);
+
+               }
+
+               queue.add(x1);
+
+               int count1 = queue.size()-1;
+
+               if(swap1==count1){
+
+               System.out.println(queue);
+
+              // System.out.println(queueB);
+
+               return;
+
+           }
+
+           }
+
+           
+
+       }
+
+    }
+
+}
